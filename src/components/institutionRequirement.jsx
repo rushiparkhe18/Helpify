@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "C:/Users/sanke/OneDrive/Desktop/Tech Horizon/TrustBridge/src/styles.css"; // Import the CSS file
 
 const availableItems = [
-  { id: 1, name: "Food Pack" },
-  { id: 2, name: "Medical Kit" },
-  { id: 3, name: "Blankets" },
+  { id: 1, name: "Food Pack", image: "/images/foodpack.jpg" },
+  { id: 2, name: "Medical Kit", image: "/images/aid.jpg" },
+  { id: 3, name: "Blankets", image: "/images/blankets.jpg" },
 ];
 
 const InstitutionRequirement = () => {
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
   const [institutionName, setInstitutionName] = useState("");
-  const [quantities, setQuantities] = useState({}); // Track quantity input
+  const [quantities, setQuantities] = useState({});
 
   useEffect(() => {
     const name = localStorage.getItem("institutionName");
@@ -30,8 +31,7 @@ const InstitutionRequirement = () => {
   };
 
   const addToCart = (item) => {
-    const quantity = quantities[item.id] || 1; // Default to 1 if no input
-
+    const quantity = quantities[item.id] || 1;
     if (quantity < 1) {
       alert("Please enter a valid quantity!");
       return;
@@ -47,7 +47,6 @@ const InstitutionRequirement = () => {
       return [...prevCart, { ...item, quantity }];
     });
 
-    // Reset the quantity input
     setQuantities((prev) => ({ ...prev, [item.id]: "" }));
   };
 
@@ -67,53 +66,66 @@ const InstitutionRequirement = () => {
   };
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-bold">Welcome, {institutionName}</h1>
-      <h2 className="text-lg mt-3">Select Items for Donation Request</h2>
-      <div className="grid grid-cols-3 gap-4 mt-4">
-        {availableItems.map((item) => (
-          <div key={item.id} className="border p-4 rounded shadow">
-            <h3>{item.name}</h3>
-            <input
-              type="number"
-              min="1"
-              value={quantities[item.id] || ""}
-              onChange={(e) => handleQuantityChange(item.id, e.target.value)}
-              className="mt-2 p-1 border rounded w-16"
-              placeholder="Qty"
-            />
-            <button
-              onClick={() => addToCart(item)}
-              className="ml-2 bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
-            >
-              Add
-            </button>
-          </div>
-        ))}
+    <div>
+      {/* Navbar */}
+      <nav className="navbar">
+        <h1>Donation Hub</h1>
+        <span>Hi, {institutionName}</span>
+      </nav>
+
+      {/* Main Content */}
+      <div className="container">
+        <h2>Select Items for Donation</h2>
+
+        {/* Items Grid */}
+        <div className="items-grid">
+          {availableItems.map((item) => (
+            <div key={item.id} className="item-card">
+              <img src={item.image} alt={item.name} />
+              <h3>{item.name}</h3>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  value={quantities[item.id] || ""}
+                  onChange={(e) => handleQuantityChange(item.id, e.target.value)}
+                  className="quantity-input"
+                  placeholder="Qty"
+                />
+                <button onClick={() => addToCart(item)} className="add-btn">
+                  Add
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Cart Section */}
+        <div className="cart-section">
+          <h2>Your Cart</h2>
+          {cart.length === 0 ? (
+            <p>Your cart is empty.</p>
+          ) : (
+            <ul>
+              {cart.map((item) => (
+                <li key={item.id} className="cart-item">
+                  <div>
+                    <img src={item.image} alt={item.name} />
+                    <span>{item.name} (x{item.quantity})</span>
+                  </div>
+                  <button onClick={() => removeFromCart(item.id)} className="remove-btn">
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <button onClick={sendRequest} className="send-btn">
+            Send Request
+          </button>
+        </div>
       </div>
-
-      {/* Cart Section */}
-      <h2 className="text-lg mt-6">Cart</h2>
-      <ul className="mt-2">
-        {cart.map((item) => (
-          <li key={item.id} className="flex justify-between p-2 border rounded">
-            {item.name} (x{item.quantity})
-            <button
-              onClick={() => removeFromCart(item.id)}
-              className="text-red-500"
-            >
-              Remove
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      <button
-        onClick={sendRequest}
-        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-      >
-        Send Request
-      </button>
     </div>
   );
 };
