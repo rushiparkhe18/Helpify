@@ -10,8 +10,9 @@ const InstitutionLogin = () => {
       alert("Please enter an institution name.");
       return;
     }
+
     localStorage.setItem("institutionName", institutionName);
-    navigate("/institution-requirements");
+    navigate("/institution-requirements"); // Redirect to requirements page
   };
 
   return (

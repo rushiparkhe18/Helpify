@@ -6,6 +6,12 @@ const availableItems = [
   { id: 1, name: "Food Pack", image: "/images/foodpack.jpg" },
   { id: 2, name: "Medical Kit", image: "/images/aid.jpg" },
   { id: 3, name: "Blankets", image: "/images/blankets.jpg" },
+  { id: 4, name: "Clothing", image: "/images/clothing.jpg" },
+  { id: 5, name: "Water Bottles", image: "/images/water.jpg" },
+  { id: 6, name: "Hygiene Kit", image: "/images/hygiene.jpg" },
+  { id: 7, name: "Baby Supplies", image: "/images/baby.jpg" },
+  { id: 8, name: "Shelter Kit", image: "/images/shelter.jpg" },
+  { id: 9, name: "School Supplies", image: "/images/school.jpg" },
 ];
 
 const InstitutionRequirement = () => {
@@ -54,53 +60,78 @@ const InstitutionRequirement = () => {
     setCart(cart.filter((item) => item.id !== id));
   };
 
-  const sendRequest = () => {
+  const sendRequest = async () => {
     if (cart.length === 0) {
       alert("Cart is empty!");
       return;
     }
-    const requestData = { institutionName, items: cart };
-    localStorage.setItem("requests", JSON.stringify(requestData));
-    alert("Request Sent!");
-    navigate("/requests");
+
+    const requestData = { instituteName: institutionName, supplies: cart };
+
+    try {
+      const response = await fetch("http://localhost:5000/api/requests", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      if (response.ok) {
+        alert("Request Sent Successfully!");
+        setCart([]); // Clear the cart after sending
+        navigate("/requests");
+      } else {
+        const errorData = await response.json();
+        alert(`Failed to send request: ${errorData.message}`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong. Try again!");
+    }
   };
 
   return (
     <div>
+    
+
       {/* Navbar */}
       <nav className="navbar">
-        <h1>Donation Hub</h1>
-        <span>Hi, {institutionName}</span>
+      <h1>Donation Hub</h1>
+        <br />
+      <span>Hi, {institutionName}</span>
+        
       </nav>
 
-      {/* Main Content */}
+      {/* Main Content - Items on left, cart on right */}
       <div className="container">
-        <h2>Select Items for Donation</h2>
-
-        {/* Items Grid */}
-        <div className="items-grid">
-          {availableItems.map((item) => (
-            <div key={item.id} className="item-card">
-              <img src={item.image} alt={item.name} />
-              <h3>{item.name}</h3>
-              <div>
-                <input
-                  type="number"
-                  min="1"
-                  value={quantities[item.id] || ""}
-                  onChange={(e) => handleQuantityChange(item.id, e.target.value)}
-                  className="quantity-input"
-                  placeholder="Qty"
-                />
-                <button onClick={() => addToCart(item)} className="add-btn">
-                  Add
-                </button>
+        {/* Left side - Items */}
+        <div className="items-section">
+          <h2 className="section-title">Select Items for Donation</h2>
+          <div className="items-grid">
+            {availableItems.map((item) => (
+              <div key={item.id} className="item-card">
+                <img src={item.image} alt={item.name} />
+                <h3>{item.name}</h3>
+                <div>
+                  <input
+                    type="number"
+                    min="1"
+                    value={quantities[item.id] || ""}
+                    onChange={(e) => handleQuantityChange(item.id, e.target.value)}
+                    className="quantity-input"
+                    placeholder="Qty"
+                  />
+                  <button onClick={() => addToCart(item)} className="add-btn">
+                    Add
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* Cart Section */}
+        {/* Right side - Cart */}
         <div className="cart-section">
           <h2>Your Cart</h2>
           {cart.length === 0 ? (
