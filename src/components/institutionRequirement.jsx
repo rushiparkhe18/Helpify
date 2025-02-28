@@ -99,7 +99,7 @@ const InstitutionRequirement = () => {
       <nav className="navbar">
       <h1>Donation Hub</h1>
         <br />
-      <span>Hi, {institutionName}</span>
+      <span>Hi, {institutionName.instituteName}</span>
         
       </nav>
 

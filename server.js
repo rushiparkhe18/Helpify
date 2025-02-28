@@ -3,29 +3,53 @@ import fs from "fs";
 import cors from "cors";
 
 const app = express();
-const DATA_FILE = "data.json"; // JSON file as database
+const REQUESTS_FILE = "data.json"; // JSON file for storing requests
+const INSTITUTIONS_FILE = "institutions.json"; // JSON file for institutions
 
 app.use(express.json());
 app.use(cors());
 
-// 📌 Load requests from JSON file
-const loadRequests = () => {
+// 📌 Function to load JSON data safely
+const loadData = (file) => {
   try {
-    const data = fs.readFileSync(DATA_FILE, "utf8");
+    const data = fs.readFileSync(file, "utf8");
     return JSON.parse(data);
   } catch (error) {
     return []; // Return empty array if file doesn't exist or is corrupted
   }
 };
 
-// 📌 Save requests to JSON file
-const saveRequests = (requests) => {
-  fs.writeFileSync(DATA_FILE, JSON.stringify(requests, null, 2));
+// 📌 Function to save JSON data
+const saveData = (file, data) => {
+  fs.writeFileSync(file, JSON.stringify(data, null, 2));
 };
+
+// 📌 GET all institution login data
+app.get("/api/institutions", (req, res) => {
+  const institutions = loadData(INSTITUTIONS_FILE);
+  res.json(institutions);
+});
+
+// 📌 POST institution login data
+app.post("/api/institutions", (req, res) => {
+  const { institutionName, address, city, country, license } = req.body;
+  
+  if (!institutionName || !address || !city || !country || !license) {
+    return res.status(400).json({ error: "Missing fields" });
+  }
+
+  const institutions = loadData(INSTITUTIONS_FILE);
+  const newInstitution = { institutionName, address, city, country, license, id: Date.now() };
+  
+  institutions.push(newInstitution);
+  saveData(INSTITUTIONS_FILE, institutions);
+
+  res.status(201).json(newInstitution);
+});
 
 // 📌 GET all requests
 app.get("/api/requests", (req, res) => {
-  const requests = loadRequests();
+  const requests = loadData(REQUESTS_FILE);
   res.json(requests);
 });
 
@@ -36,11 +60,11 @@ app.post("/api/requests", (req, res) => {
     return res.status(400).json({ error: "Missing fields" });
   }
 
-  const requests = loadRequests();
+  const requests = loadData(REQUESTS_FILE);
   const newRequest = { instituteName, supplies, id: Date.now() };
   requests.push(newRequest);
 
-  saveRequests(requests);
+  saveData(REQUESTS_FILE, requests);
   res.status(201).json(newRequest);
 });
 

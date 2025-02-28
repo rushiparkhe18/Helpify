@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../requests.css";
 
 const Requests = () => {
   const [requests, setRequests] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/api/requests")
@@ -15,23 +17,38 @@ const Requests = () => {
     <div>
       <h1>All Institution Requests</h1>
 
-      {/* Display Requests */}
       {requests.length === 0 ? (
         <p>No requests yet.</p>
       ) : (
         <div className="requests-container">
-          {requests.map((req, index) => (
-            <div key={index} className="request-card">
-              <h2>{req.instituteName}</h2>
-              <ul>
-                {req.supplies.map((item, i) => (
-                  <li key={i}>
-                    {item.name} (x{item.quantity})
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {requests.map((req, index) => {
+            let institutionData;
+            try {
+              institutionData = JSON.parse(req.instituteName); // Parse JSON safely
+            } catch (error) {
+              console.error("Error parsing instituteName:", error);
+              institutionData = { institutionName: "Unknown", city: "Unknown" }; // Fallback
+            }
+
+            return (
+              <div key={index} className="request-card">
+                <h2>{institutionData.institutionName} - {institutionData.city}</h2>
+                <ul>
+                  {req.supplies.map((item, i) => (
+                    <li key={i}>
+                      {item.name} (x{item.quantity})
+                    </li>
+                  ))}
+                </ul>
+                <button 
+                  className="donate-btn" 
+                  onClick={() => navigate(`/donate`, { state: req })}
+                >
+                  Donate
+                </button>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

@@ -1,0 +1,35 @@
+[
+    {
+      "id": 1,
+      "name": "Relief Supplies Co.",
+      "location": "Delhi",
+      "prices": {
+        "Food Pack": 200,
+        "Medical Kit": 200,
+        "Blankets": 300,
+        "Clothing": 150,
+        "Water Bottles": 100,
+        "Hygiene Kit": 180,
+        "Baby Supplies": 250,
+        "Shelter Kit": 500,
+        "School Supplies": 350
+      }
+    },
+    {
+      "id": 2,
+      "name": "Helping Hands",
+      "location": "Mumbai",
+      "prices": {
+        "Food Pack": 210,
+        "Medical Kit": 190,
+        "Blankets": 320,
+        "Clothing": 140,
+        "Water Bottles": 110,
+        "Hygiene Kit": 170,
+        "Baby Supplies": 260,
+        "Shelter Kit": 490,
+        "School Supplies": 340
+      }
+    }
+  ]
+  
