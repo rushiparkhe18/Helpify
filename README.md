@@ -1,8 +1,6 @@
 # **Donation Platform** 🌍💖  
 A **modern donation platform** that connects **donors, institutions, and vendors**, ensuring **secure and transparent transactions** with blockchain, AI-powered fraud detection, and image verification.  
 
-## **🖥️ Live Preview**  
-(If deployed, add your link here)  
 
 ---
 
@@ -110,10 +108,7 @@ The app should now be running at `http://localhost:3000/` 🚀
 
 ---
 
-## **📸 Screenshots**
-(Add UI screenshots here)
 
----
 
 ## **🌟 Contributing**
 Want to improve this project? Feel free to **fork**, create a branch, and submit a PR!
