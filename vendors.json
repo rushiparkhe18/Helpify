@@ -39,10 +39,10 @@
       "location": "Delhi",
       "prices": {
         "Food Pack": 200,
-        "Medical Kit": 200,
+        "Medical Kit": 100,
         "Blankets": 300,
         "Clothing": 150,
-        "Water Bottles": 100,
+        "Water Bottles": 10,
         "Hygiene Kit": 180,
         "Baby Supplies": 250,
         "Shelter Kit": 500,

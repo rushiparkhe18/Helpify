@@ -1,4 +1,4 @@
-import qrCodeImage from "C:/Users/sanke/OneDrive/Desktop/Tech Horizon/TrustBridge/src/assets/QrCode.jpeg"; // Ensure your image is in "src/assets" folder
+import qrCodeImage from "C:/Users/sanke/OneDrive/Desktop/Tech Horizon/TrustBridge/images/qr.svg"; // Ensure your image is in "src/assets" folder
 
 const PaymentQRCode = () => {
   return (
@@ -36,7 +36,7 @@ const PaymentQRCode = () => {
 
         {/* Name Display */}
         <h3 className="text-lg font-semibold text-gray-800 mt-4">
-          KAMALESHWAR VENKATESH VIYANWAR
+          Vendor recipt
         </h3>
       </div>
     </div>
