@@ -1,4 +1,4 @@
-# **Donation Platform** 🌍💖  
+# **Donation Platform** 🌍
 A **modern donation platform** that connects **donors, institutions, and vendors**, ensuring **secure and transparent transactions** with blockchain, AI-powered fraud detection, and image verification.  
 
 
