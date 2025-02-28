@@ -14,13 +14,12 @@ const Donate = () => {
     }
   }, [request, navigate]);
 
-  // Safely parse instituteName if it's a JSON string
   let institutionData;
   try {
     institutionData = JSON.parse(request?.instituteName);
   } catch (error) {
     console.error("Error parsing instituteName:", error);
-    institutionData = { institutionName: "Unknown", city: "Unknown" }; // Fallback
+    institutionData = { institutionName: "Unknown", city: "Unknown" };
   }
 
   const calculateTotal = () => {
@@ -33,7 +32,7 @@ const Donate = () => {
 
   const handleConfirmDonation = () => {
     alert(`Thank you for donating! Total Amount: ₹${calculateTotal()}`);
-    navigate("/requests");
+    navigate("/qr");
   };
 
   return (
@@ -51,15 +50,31 @@ const Donate = () => {
         style={{
           maxWidth: "600px",
           width: "100%",
-          backgroundColor: "#fff",
+          backgroundColor: "rgba(151, 146, 146, 0.93)",
           padding: "20px",
           borderRadius: "10px",
           boxShadow: "1px 4px 50px rgba(0,0,0,0.1)",
         }}
       >
-        <h1 style={{ textAlign: "center", color: "#333", marginBottom: "20px" }}>
-          Donate to {institutionData.institutionName} ({institutionData.city})
-        </h1>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
+          <h1 style={{ textAlign: "center", color: "#333" }}>
+            Donate to {institutionData.institutionName} ({institutionData.city})
+          </h1>
+          <button
+            onClick={() => navigate("/verify")}
+            style={{
+              padding: "8px 15px",
+              backgroundColor: "#ff9800",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              fontSize: "14px",
+            }}
+          >
+            Verify ✅
+          </button>
+        </div>
 
         <h2 style={{ color: "#555", marginBottom: "10px" }}>Select a Vendor</h2>
         <div style={{ display: "grid", gap: "10px" }}>
@@ -125,7 +140,7 @@ const Donate = () => {
               ))}
             </ul>
             <h3 style={{ color: "#008000" }}>Total: ₹{calculateTotal()}</h3>
-            <button
+            <button 
               onClick={handleConfirmDonation}
               style={{
                 width: "100%",

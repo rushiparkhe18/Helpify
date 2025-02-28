@@ -35,7 +35,7 @@ const Requests = () => {
                 <h2>{institutionData.institutionName} - {institutionData.city}</h2>
                 <ul>
                   {req.supplies.map((item, i) => (
-                    <li key={i}>
+                    <li key={i} b>
                       {item.name} (x{item.quantity})
                     </li>
                   ))}

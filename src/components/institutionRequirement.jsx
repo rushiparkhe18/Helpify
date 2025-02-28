@@ -3,15 +3,16 @@ import { useNavigate } from "react-router-dom";
 import "C:/Users/sanke/OneDrive/Desktop/Tech Horizon/TrustBridge/src/styles.css"; // Import the CSS file
 
 const availableItems = [
-  { id: 1, name: "Food Pack", image: "/images/foodpack.jpg" },
+  { id: 1, name: "Rice", image: "/images/rice.jpeg" },
   { id: 2, name: "Medical Kit", image: "/images/aid.jpg" },
+  { id: 10, name: "Atta", image: "/images/atta.webp" },
   { id: 3, name: "Blankets", image: "/images/blankets.jpg" },
-  { id: 4, name: "Clothing", image: "/images/clothing.jpg" },
+  { id: 4, name: "Clothing", image: "/images/clothes.webp" },
   { id: 5, name: "Water Bottles", image: "/images/water.jpg" },
-  { id: 6, name: "Hygiene Kit", image: "/images/hygiene.jpg" },
+  { id: 6, name: "Hygiene Kit", image: "/images/hygine.jpg" },
   { id: 7, name: "Baby Supplies", image: "/images/baby.jpg" },
-  { id: 8, name: "Shelter Kit", image: "/images/shelter.jpg" },
-  { id: 9, name: "School Supplies", image: "/images/school.jpg" },
+  { id: 8, name: "Shelter Kit", image: "/images/shelter.webp" },
+  { id: 9, name: "School Supplies", image: "/images/books.jpg" },
 ];
 
 const InstitutionRequirement = () => {
@@ -97,7 +98,7 @@ const InstitutionRequirement = () => {
 
       {/* Navbar */}
       <nav className="navbar">
-      <h1>Donation Hub</h1>
+      <h1>Trust-Bridge</h1>
         <br />
       <span>Hi, {institutionName.instituteName}</span>
         

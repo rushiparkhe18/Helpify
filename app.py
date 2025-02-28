@@ -4,29 +4,24 @@ from PIL import Image
 import torch
 import io
 
-# Initialize FastAPI
 app = FastAPI()
 
-# Load the model
+# Load model and processor
 model_name = "Kaludi/food-category-classification-v2.0"
 processor = AutoImageProcessor.from_pretrained(model_name)
 model = AutoModelForImageClassification.from_pretrained(model_name)
+model.eval()
 
-@app.post("/classify/")
+@app.post("/classify")
 async def classify_image(file: UploadFile = File(...)):
-    # Read image
     image = Image.open(io.BytesIO(await file.read())).convert("RGB")
-
-    # Process image
     inputs = processor(images=image, return_tensors="pt")
 
-    # Get prediction
     with torch.no_grad():
         outputs = model(**inputs)
-        logits = outputs.logits
-        predicted_class = logits.argmax(-1).item()
+        predicted_class = outputs.logits.argmax().item()
 
-    # Get class label
-    label = model.config.id2label[predicted_class]
+    return {"prediction": str(predicted_class)}
 
-    return {"prediction": label}
+
+

@@ -30,6 +30,232 @@
         "Shelter Kit": 490,
         "School Supplies": 340
       }
+    },
+  
+  
+    {
+      "id": 1,
+      "name": "Relief Supplies Co.",
+      "location": "Delhi",
+      "prices": {
+        "Food Pack": 200,
+        "Medical Kit": 200,
+        "Blankets": 300,
+        "Clothing": 150,
+        "Water Bottles": 100,
+        "Hygiene Kit": 180,
+        "Baby Supplies": 250,
+        "Shelter Kit": 500,
+        "School Supplies": 350
+      }
+    },
+    {
+      "id": 2,
+      "name": "Helping Hands",
+      "location": "Mumbai",
+      "prices": {
+        "Food Pack": 210,
+        "Medical Kit": 190,
+        "Blankets": 320,
+        "Clothing": 140,
+        "Water Bottles": 110,
+        "Hygiene Kit": 170,
+        "Baby Supplies": 260,
+        "Shelter Kit": 490,
+        "School Supplies": 340
+      }
+    },
+    {
+      "id": 3,
+      "name": "Relief Aid Network",
+      "location": "Bangalore",
+      "prices": {
+        "Food Pack": 205,
+        "Medical Kit": 195,
+        "Blankets": 310,
+        "Clothing": 155,
+        "Water Bottles": 105,
+        "Hygiene Kit": 175,
+        "Baby Supplies": 255,
+        "Shelter Kit": 480,
+        "School Supplies": 345
+      }
+    },
+    {
+      "id": 4,
+      "name": "Care & Support",
+      "location": "Chennai",
+      "prices": {
+        "Food Pack": 215,
+        "Medical Kit": 185,
+        "Blankets": 315,
+        "Clothing": 145,
+        "Water Bottles": 120,
+        "Hygiene Kit": 165,
+        "Baby Supplies": 265,
+        "Shelter Kit": 495,
+        "School Supplies": 355
+      }
+    },
+    {
+      "id": 5,
+      "name": "Helping Hands",
+      "location": "Kolkata",
+      "prices": {
+        "Food Pack": 220,
+        "Medical Kit": 175,
+        "Blankets": 305,
+        "Clothing": 135,
+        "Water Bottles": 115,
+        "Hygiene Kit": 160,
+        "Baby Supplies": 270,
+        "Shelter Kit": 510,
+        "School Supplies": 365
+      }
+    },
+    {
+      "id": 6,
+      "name": "Relief Point",
+      "location": "Hyderabad",
+      "prices": {
+        "Food Pack": 195,
+        "Medical Kit": 180,
+        "Blankets": 290,
+        "Clothing": 160,
+        "Water Bottles": 95,
+        "Hygiene Kit": 190,
+        "Baby Supplies": 240,
+        "Shelter Kit": 470,
+        "School Supplies": 330
+      }
+    },
+    {
+      "id": 7,
+      "name": "Aid Trust",
+      "location": "Pune",
+      "prices": {
+        "Food Pack": 225,
+        "Medical Kit": 170,
+        "Blankets": 325,
+        "Clothing": 130,
+        "Water Bottles": 125,
+        "Hygiene Kit": 155,
+        "Baby Supplies": 275,
+        "Shelter Kit": 520,
+        "School Supplies": 370
+      }
+    },
+    {
+      "id": 8,
+      "name": "Relief Network",
+      "location": "Ahmedabad",
+      "prices": {
+        "Food Pack": 210,
+        "Medical Kit": 185,
+        "Blankets": 315,
+        "Clothing": 145,
+        "Water Bottles": 110,
+        "Hygiene Kit": 165,
+        "Baby Supplies": 260,
+        "Shelter Kit": 490,
+        "School Supplies": 340
+      }
+    },
+    {
+      "id": 9,
+      "name": "Support Foundation",
+      "location": "Jaipur",
+      "prices": {
+        "Food Pack": 200,
+        "Medical Kit": 200,
+        "Blankets": 300,
+        "Clothing": 150,
+        "Water Bottles": 100,
+        "Hygiene Kit": 180,
+        "Baby Supplies": 250,
+        "Shelter Kit": 500,
+        "School Supplies": 350
+      }
+    },
+    {
+      "id": 10,
+      "name": "Relief Aid",
+      "location": "Lucknow",
+      "prices": {
+        "Food Pack": 205,
+        "Medical Kit": 195,
+        "Blankets": 310,
+        "Clothing": 155,
+        "Water Bottles": 105,
+        "Hygiene Kit": 175,
+        "Baby Supplies": 255,
+        "Shelter Kit": 480,
+        "School Supplies": 345
+      }
+    },
+    {
+      "id": 11,
+      "name": "Humanity First",
+      "location": "Chandigarh",
+      "prices": {
+        "Food Pack": 195,
+        "Medical Kit": 190,
+        "Blankets": 295,
+        "Clothing": 140,
+        "Water Bottles": 110,
+        "Hygiene Kit": 170,
+        "Baby Supplies": 245,
+        "Shelter Kit": 460,
+        "School Supplies": 325
+      }
+    },
+    {
+      "id": 12,
+      "name": "Relief Trust",
+      "location": "Bhopal",
+      "prices": {
+        "Food Pack": 210,
+        "Medical Kit": 180,
+        "Blankets": 310,
+        "Clothing": 150,
+        "Water Bottles": 120,
+        "Hygiene Kit": 175,
+        "Baby Supplies": 260,
+        "Shelter Kit": 500,
+        "School Supplies": 350
+      }
+    },
+    {
+      "id": 13,
+      "name": "Care Relief",
+      "location": "Indore",
+      "prices": {
+        "Food Pack": 220,
+        "Medical Kit": 170,
+        "Blankets": 320,
+        "Clothing": 140,
+        "Water Bottles": 115,
+        "Hygiene Kit": 165,
+        "Baby Supplies": 270,
+        "Shelter Kit": 510,
+        "School Supplies": 360
+      }
+    },
+    {
+      "id": 14,
+      "name": "Disaster Relief Org",
+      "location": "Patna",
+      "prices": {
+        "Food Pack": 215,
+        "Medical Kit": 185,
+        "Blankets": 315,
+        "Clothing": 145,
+        "Water Bottles": 105,
+        "Hygiene Kit": 160,
+        "Baby Supplies": 265,
+        "Shelter Kit": 495,
+        "School Supplies": 355
+      }
     }
   ]
   
